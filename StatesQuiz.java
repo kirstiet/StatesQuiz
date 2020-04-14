@@ -14,7 +14,18 @@ public class StatesQuiz {
 			String userResponseReview = userInput();
 
 			if(userResponseReview.equalsIgnoreCase("yes") || userResponseReview.equalsIgnoreCase("y")) {
-				reviewStates();
+				System.out.println("Do you want to review the capitals or the states?");
+				String selectStateOrCapital = userInput();
+
+				if(selectStateOrCapital.equalsIgnoreCase("states")) {
+					reviewStates();
+
+				} else if(selectStateOrCapital.equalsIgnoreCase("capitals")) {
+					reviewCapitals();
+
+				} else {
+					System.out.println("You did not select states or capitals.");
+				}
 
 			} else {
 				System.out.println("Okay, let's jump into the quiz!" 
@@ -135,6 +146,38 @@ public class StatesQuiz {
 			} else {
 				System.out.println("That is not correct." 
 					+ "\nThe correct answer is " + capitalsArray[i]);
+
+			}
+
+		}
+		long endReviewTime = System.currentTimeMillis();
+		float totalReviewTimeElapsed = ((float)(int)(endReviewTime - startReviewTime))/1000;
+
+		System.out.println("\nYou got " + reviewPointCounter + " correct out of 50." 
+			+ "\nThe total time elapsed was: " + totalReviewTimeElapsed + " seconds.");
+		return reviewPointCounter;
+
+	}
+
+
+	public static int reviewCapitals() {
+		String[] statesArray = fileOpener("states.txt");
+		String[] capitalsArray = fileOpener("capitals.txt");
+		int reviewPointCounter = 0;
+
+		System.out.println("Let's review the states and their capitals.");
+
+		long startReviewTime = System.currentTimeMillis();
+		for(int i = 0 ; i < capitalsArray.length ; i++ ) {
+			System.out.println("\nWhich state has the capital of " + capitalsArray[i] + "?");
+			String userResponse = userInput();
+
+			if(userResponse.equalsIgnoreCase(statesArray[i])) {
+				reviewPointCounter++;
+
+			} else {
+				System.out.println("That is not correct." 
+					+ "\nThe correct answer is " + statesArray[i]);
 
 			}
 
