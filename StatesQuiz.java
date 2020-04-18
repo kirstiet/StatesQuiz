@@ -133,23 +133,50 @@ public class StatesQuiz {
 		String[] capitalsArray = fileOpener("capitals.txt");
 		int reviewPointCounter = 0;
 
-		System.out.println("Let's review the states and their capitals.");
+		System.out.println("Let's review the states." 
+			+ "\nYou will be given the name of the states and you will name their capitals." 
+			+ "\nDo you want to review them in order? Yes or No?");
 
+		String userResponseInOrder = userInput();
 		long startReviewTime = System.currentTimeMillis();
-		for(int i = 0 ; i < statesArray.length ; i++ ) {
-			System.out.println("\nWhat is the capital of " + statesArray[i] + "?");
-			String userResponse = userInput();
+		if(userResponseInOrder.equalsIgnoreCase("yes") || userResponseInOrder.equalsIgnoreCase("y")) {
 
-			if(userResponse.equalsIgnoreCase(capitalsArray[i])) {
-				reviewPointCounter++;
+			for(int i = 0 ; i < statesArray.length ; i++ ) {
+				System.out.println("\nWhat is the capital of " + statesArray[i] + "?");
+				String userResponse = userInput();
 
-			} else {
-				System.out.println("That is not correct." 
-					+ "\nThe correct answer is " + capitalsArray[i]);
+				if(userResponse.equalsIgnoreCase(capitalsArray[i])) {
+					reviewPointCounter++;
+
+				} else {
+					System.out.println("\nThat is not correct." 
+						+ "\nThe correct answer is " + capitalsArray[i]);
+
+				}
+
+			}
+
+		} else {
+						
+			for(int i = 0 ; i < statesArray.length ; i++ ) {
+				int randomNumber = (int)(Math.random() * 50);
+				System.out.println("\nWhat is the capital of " + statesArray[randomNumber] + "?");
+				String userResponse = userInput();
+
+				if(userResponse.equalsIgnoreCase(capitalsArray[randomNumber])) {
+
+					reviewPointCounter++;
+
+				} else {
+					System.out.println("That is not correct." 
+						+ "\nThe correct answer is " + capitalsArray[randomNumber]);
+
+				}
 
 			}
 
 		}
+
 		long endReviewTime = System.currentTimeMillis();
 		float totalReviewTimeElapsed = ((float)(int)(endReviewTime - startReviewTime))/1000;
 
@@ -158,6 +185,7 @@ public class StatesQuiz {
 		return reviewPointCounter;
 
 	}
+
 
 
 	public static int reviewCapitals() {
@@ -165,23 +193,50 @@ public class StatesQuiz {
 		String[] capitalsArray = fileOpener("capitals.txt");
 		int reviewPointCounter = 0;
 
-		System.out.println("Let's review the states and their capitals.");
+		System.out.println("Let's review the capitals." 
+			+ "\nYou will be given tha name of the capitals and you will name the states." 
+			+ "\nDo you want to review them in order? Yes or No?");
 
+
+		String userResponseInOrder = userInput();
 		long startReviewTime = System.currentTimeMillis();
-		for(int i = 0 ; i < capitalsArray.length ; i++ ) {
-			System.out.println("\nWhich state has the capital of " + capitalsArray[i] + "?");
-			String userResponse = userInput();
+		if(userResponseInOrder.equalsIgnoreCase("yes") || userResponseInOrder.equalsIgnoreCase("y")) {
 
-			if(userResponse.equalsIgnoreCase(statesArray[i])) {
-				reviewPointCounter++;
+			for(int i = 0 ; i < statesArray.length ; i++ ) {
+				System.out.println("\nWhich state has the capital of " + capitalsArray[i] + "?");
+				String userResponse = userInput();
 
-			} else {
-				System.out.println("That is not correct." 
-					+ "\nThe correct answer is " + statesArray[i]);
+				if(userResponse.equalsIgnoreCase(statesArray[i])) {
+					reviewPointCounter++;
+
+				} else {
+					System.out.println("\nThat is not correct." 
+						+ "\nThe correct answer is " + statesArray[i]);
+
+				}
+
+			}
+
+		} else {
+						
+			for(int i = 0 ; i < statesArray.length ; i++ ) {
+				int randomNumber = (int)(Math.random() * 50);
+				System.out.println("\nWhich state has the capital of " + capitalsArray[randomNumber] + "?");
+				String userResponse = userInput();
+
+				if(userResponse.equalsIgnoreCase(statesArray[randomNumber])) {
+					reviewPointCounter++;
+
+				} else {
+					System.out.println("That is not correct." 
+						+ "\nThe correct answer is " + statesArray[randomNumber]);
+
+				}
 
 			}
 
 		}
+
 		long endReviewTime = System.currentTimeMillis();
 		float totalReviewTimeElapsed = ((float)(int)(endReviewTime - startReviewTime))/1000;
 
@@ -190,5 +245,6 @@ public class StatesQuiz {
 		return reviewPointCounter;
 
 	}
+
 
 }
